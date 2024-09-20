@@ -1,0 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#notifications, #control, #ai-results {
+    margin: 20px;
+}
+
+button {
+    margin: 5px;
+}
