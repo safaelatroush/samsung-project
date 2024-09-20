@@ -1,6 +1,6 @@
 const socket = io();
 
-// Update status based on received data
+//to get data from nodeJS
 socket.on('mqtt_message', (data) => {
     console.log(`Received message from ${data.topic}: ${data.payload}`);
     try {
@@ -12,8 +12,8 @@ socket.on('mqtt_message', (data) => {
 });
 
 function updateIcon(element, iconClass) {
-    element.className = ''; // Clear existing classes
-    element.classList.add('fas', iconClass); // Add new icon class
+    element.className = ''; 
+    element.classList.add('fas', iconClass); 
 }
 
 function updateAlertClass(alertElement, addClass, removeClass) {
@@ -21,8 +21,8 @@ function updateAlertClass(alertElement, addClass, removeClass) {
     alertElement.classList.add(addClass);
 }
 
+//update status of the container including the color, icon and text
 function updateStatus(payload) {
-    // Temperature
     if (payload.temperature !== undefined) {
         const temperature = parseFloat(payload.temperature);
         const tempElement = document.getElementById('temperature-status');
@@ -48,7 +48,6 @@ function updateStatus(payload) {
         }
     }
 
-    // Rain detection
     if (payload.rain_sensor !== undefined) {
         const rainElement = document.getElementById('rain-detection-status');
         const rainIcon = document.getElementById('rain-icon');
@@ -56,15 +55,15 @@ function updateStatus(payload) {
         if (payload.rain_sensor == '1') {
             rainElement.innerText = 'Detected';
             updateAlertClass(rainAlert, 'alert-rain', 'alert-no-rain');
-            updateIcon(rainIcon, 'fa-cloud-showers-heavy');  // Rain detected icon
+            updateIcon(rainIcon, 'fa-cloud-showers-heavy'); 
         } else {
             rainElement.innerText = 'Not Detected';
             updateAlertClass(rainAlert, 'alert-no-rain', 'alert-rain');
-            updateIcon(rainIcon, 'fa-cloud');  // No rain icon
+            updateIcon(rainIcon, 'fa-cloud');  
         }
     }
 
-    // LDR detection
+
     if (payload.ldr !== undefined) {
         const ldrElement = document.getElementById('ldr-status');
         const ldrIcon = document.getElementById('ldr-icon');
@@ -72,15 +71,14 @@ function updateStatus(payload) {
         if (payload.ldr == '1') {
             ldrElement.innerText = 'Light';
             updateAlertClass(ldrAlert, 'alert-light', 'alert-dark');
-            updateIcon(ldrIcon, 'fa-sun');  // Light detected icon
+            updateIcon(ldrIcon, 'fa-sun');  
         } else {
             ldrElement.innerText = 'Dark';
             updateAlertClass(ldrAlert, 'alert-dark', 'alert-light');
-            updateIcon(ldrIcon, 'fa-moon');  // Dark icon
+            updateIcon(ldrIcon, 'fa-moon');  
         }
     }
 
-    // Fire warning
     if (payload.flame_sensor !== undefined) {
         const fireElement = document.getElementById('fire-warning-status');
         const fireIcon = document.getElementById('fire-icon');
@@ -88,16 +86,15 @@ function updateStatus(payload) {
         if (payload.flame_sensor == '1') {
             fireElement.innerText = 'Warning';
             updateAlertClass(fireAlert, 'alert-fire-warning', 'alert-fire-safe');
-            updateIcon(fireIcon, 'fa-exclamation-triangle');  // Fire warning icon
+            updateIcon(fireIcon, 'fa-exclamation-triangle');  
         } else {
             fireElement.innerText = 'Safe';
             updateAlertClass(fireAlert, 'alert-fire-safe', 'alert-fire-warning');
-            updateIcon(fireIcon, 'fa-check');  // Safe icon
+            updateIcon(fireIcon, 'fa-check'); 
         }
     }
 }
 
-//update status
 
 function updateStatusDisplay(topic, status) {
     if (topic === 'leds_control_topic') {
@@ -106,14 +103,11 @@ function updateStatusDisplay(topic, status) {
         ledsState.classList.toggle('inactive', status === 'Inactive');
         updateButtonState('leds-toggle', status);
     }
-    // Repeat for other devices
+    
 }
 
 
-// You can keep the rest of the code for handling controls as it is.
 
-
-// Function to handle control actions
 function sendControlCommand(topic, value) {
     fetch('/api/control', {
         method: 'POST',

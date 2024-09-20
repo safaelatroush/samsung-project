@@ -241,15 +241,15 @@ container{
 }
 
 .state span {
-    color: #28a745; /* Green for active */
+    color: #28a745; 
 }
 
 .state.inactive span{
-    color: #dc3545; /* Red for inactive */
+    color: #dc3545; /
 }
 
 button {
-    background-color: #dc3545; /* Green for active */
+    background-color: #dc3545; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -265,7 +265,7 @@ button:hover{
 }
 
 button.inactive {
-    background-color: #28a745; /* Red for inactive */
+    background-color: #28a745;
 }
 
 button.inactive:hover{
