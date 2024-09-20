@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control</title>
+  <link rel="stylesheet" href="control.css">
+</head>
+<body>
+  <!--nav-->
+  <header class="header">
+    <nav class="navbar">
+        <a href="#" class="nav-logo">Farm</a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="control.html" class="nav-link">Control</a>
+            </li>
+            <li class="nav-item">
+                <a href="house.html" class="nav-link">Green House</a>
+            </li>
+            <li class="nav-item">
+                <a href="ai.html" class="nav-link">Disease Detection</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+
+  <!--body-->
+  <div id="notifications">
+    <h2>Notifications</h2>
+    <p>Fire Warning: <span id="fire-warning-status">Unknown</span></p>
+    <p>Rain Detection: <span id="rain-detection-status">Unknown</span></p>
+    <p>LEDs: <span id="leds-status">Unknown</span></p>
+    <p>Water Pump: <span id="water-pump-status">Unknown</span></p>
+    <p>Buzzer: <span id="buzzer-status">Unknown</span></p>
+
+</div>
+
+<div id="control">
+    <h2>Control</h2>
+    <button id="leds-on">Turn LEDs On</button>
+    <button id="leds-off">Turn LEDs Off</button>
+    <button id="water-pump-on">Turn Water Pump On</button>
+    <button id="water-pump-off">Turn Water Pump Off</button>
+    <button id="buzzer-on">Turn Buzzer On</button>
+    <button id="buzzer-off">Turn Buzzer Off</button>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

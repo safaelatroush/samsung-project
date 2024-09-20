@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green House</title>
+  <link rel="stylesheet" href="house.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar">
+        <a href="#" class="nav-logo">Farm</a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="control.html" class="nav-link">Control</a>
+            </li>
+            <li class="nav-item">
+                <a href="house.html" class="nav-link">Green House</a>
+            </li>
+            <li class="nav-item">
+                <a href="ai.html" class="nav-link">Disease Detection</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+
+    <div class="notifications">
+      <p>Fan: <span id="fan-status">Unknown</span></p>
+      <p>Temperature: <span id="temperature-status">Unknown</span></p>
+      <p>Humidity: <span id="humidity-status">Unknown</span></p>
+    </div>
+
+    <div class="control">
+      <button id="fan-on">Turn Fan On</button>
+      <button id="fan-off">Turn Fan Off</button>
+    </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
