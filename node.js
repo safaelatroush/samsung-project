@@ -101,6 +101,8 @@ app.post('/api/control', (req, res) => {
     }
 });
 
+//
+
 // Serve static files (your front-end HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, 'public')));
 
